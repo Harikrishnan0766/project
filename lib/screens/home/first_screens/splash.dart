@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:marshall/screens/home/first_screens/next.dart';
+import 'package:marshall/screens/home/first_screens/started.dart';
 
 
 class Screensplash extends StatefulWidget {
@@ -33,6 +34,6 @@ class _ScreensplashState extends State<Screensplash> {
     await Future.delayed(const Duration(seconds: 3));
     
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: ((ctx) => const Screennext())));
+        MaterialPageRoute(builder: ((ctx) =>   Screenstarted())));
   }
 }

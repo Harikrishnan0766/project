@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marshall/screens/home/first_screens/next.dart';
+import 'package:marshall/screens/home/first_screens/started.dart';
+import 'package:marshall/screens/home/newfolder.dart/about.dart';
+import 'package:marshall/screens/home/newfolder.dart/privacy.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
@@ -36,7 +39,10 @@ class DrawerMenu extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             textColor: Colors.white,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (ctx) => const AboutUs()));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.privacy_tip_rounded),
@@ -46,7 +52,10 @@ class DrawerMenu extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             textColor: Colors.white,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (ctx) => const Privacy()));
+            },
           ),
           // ListTile(
           //   leading: const Icon(Icons.settings),
@@ -54,7 +63,7 @@ class DrawerMenu extends StatelessWidget {
           //   title: const Text(
           //     'Settings',
           //     style: TextStyle(fontSize: 18),
-          //   ), 
+          //   ),
           //   textColor: Colors.white,
           //   onTap: () {},
           // ),
@@ -68,7 +77,7 @@ class DrawerMenu extends StatelessWidget {
             textColor: Colors.white,
             onTap: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (ctx) => const Screennext()));
+                  MaterialPageRoute(builder: (ctx) => Screenstarted()));
             },
           ),
         ],

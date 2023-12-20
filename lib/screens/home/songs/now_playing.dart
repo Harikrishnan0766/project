@@ -6,9 +6,11 @@ import 'package:just_audio/just_audio.dart';
 import 'package:marshall/controller/song_controller.dart';
 import 'package:marshall/model/folder_model.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+import 'package:provider/provider.dart';
 
 import '../../../db/functions/db_functions.dart';
 import '../../../music_db/songs_model.dart';
+import '../../../provider/song_model_provider.dart';
 import '../../../recent_db_function/rececent_db_function.dart';
 
 class Musicscreen extends StatefulWidget {
@@ -125,13 +127,11 @@ class _MusicscreenState extends State<Musicscreen>
             Center(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 90,
                   ),
-                  Center(
-                    child: QueryArtworkWidget(
-                        id: widget.songModel[widget.index].songid,
-                        type: ArtworkType.AUDIO),
+                  const Center(
+                    child: const ArtWorkWidget(),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -145,7 +145,7 @@ class _MusicscreenState extends State<Musicscreen>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
                       Container(
@@ -192,11 +192,6 @@ class _MusicscreenState extends State<Musicscreen>
                                         onplaylistbuttonclicked(
                                             id: widget.songModel[widget.index]
                                                 .songid);
-                                        // You can access
-                                        // String enteredText = textController.text;
-                                        // // Do something with the entered text, e.g., add it to a list.
-                                        // print('Entered text: $enteredText');
-                                        // Navigator.of(context).pop(); // Close the dialog
                                       },
                                     ),
                                   ],
@@ -204,7 +199,7 @@ class _MusicscreenState extends State<Musicscreen>
                               },
                             );
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.playlist_add,
                             size: 30,
                           ))
@@ -368,5 +363,34 @@ class _MusicscreenState extends State<Musicscreen>
     } else {
       addfolder(music);
     }
+  }
+}
+
+class ArtWorkWidget extends StatelessWidget {
+  const ArtWorkWidget({
+    super.key,
+    // required this.widget,
+  });
+
+  // final Musicscreen widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return QueryArtworkWidget(
+      // id:context.watch<SongmodelProvider>().id,
+      id: context.watch<SongmodelProvider>().id,
+      type: ArtworkType.AUDIO, artworkHeight: 200, artworkWidth: 200,
+      artworkFit: BoxFit.cover,
+      nullArtworkWidget: Container(
+          decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 8, 152, 218),
+              borderRadius: BorderRadius.all(Radius.circular(100))),
+          height: 200,
+          width: 200,
+          child: const Icon(
+            Icons.music_note,
+            size: 150,
+          )),
+    );
   }
 }

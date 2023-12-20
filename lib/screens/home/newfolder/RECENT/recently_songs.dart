@@ -50,6 +50,9 @@ class _RecentlysongState extends State<Recentlysong> {
                     artworkBorder: const BorderRadius.all(Radius.circular(30)),
                     id: item.data![index].songid,
                     type: ArtworkType.AUDIO,
+                      nullArtworkWidget: Icon(
+                    Icons.music_note,
+                  ),
                   ),
                 ),
               );

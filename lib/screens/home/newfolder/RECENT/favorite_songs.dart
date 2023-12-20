@@ -29,38 +29,48 @@ class _FavoritesongState extends State<Favoritesong> {
           child: FutureBuilder(
             future: favList(),
             builder: (context, snapshot) {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (ctx) => Musicscreen(
-                              songModel: snapshot.data!,
-                              audioPlayer: audioPlayer,
-                              index: index)));
-                    },
-                    child: ListTile(
-                      trailing: IconButton(
-                          onPressed: () {
-                            likeDbDeleteFuction(snapshot.data![index]);
-                            setState(() {});
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.red,
+              if (snapshot.data == null) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => Musicscreen(
+                                songModel: snapshot.data!,
+                                audioPlayer: audioPlayer,
+                                index: index)));
+                      },
+                      child: ListTile(
+                          trailing: IconButton(
+                              onPressed: () {
+                                likeDbDeleteFuction(snapshot.data![index]);
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              )),
+                          title: Text(
+                            '${snapshot.data![index].title}',
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                          leading: QueryArtworkWidget(
+                            id: snapshot.data![index].songid,
+                            type: ArtworkType.AUDIO,
+                            nullArtworkWidget: const Icon(
+                              Icons.music_note,
+                            ),
                           )),
-                      title: Text(
-                        '${snapshot.data![index].title}',
-                        style: TextStyle(overflow: TextOverflow.ellipsis),
-                      ),
-                      leading: QueryArtworkWidget(
-                          id: snapshot.data![index].songid,
-                          type: ArtworkType.AUDIO),
-                    ),
-                  );
-                },
-              );
+                    );
+                  },
+                );
+              }
             },
           ),
         ));

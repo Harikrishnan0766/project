@@ -229,43 +229,42 @@ class _MyplaylistState extends State<Myplaylist> {
                                 IconButton(
                                     onPressed: () {
                                       showDialog(
-                                        
-              context: context,
-              builder: (context) {
-                _nameController.text = '';
-                return AlertDialog(
-                  title: const Text('Edit name'),
-                  content: TextField(
-                    controller: _nameController,
-                    decoration: const InputDecoration(
-                      hintText: 'Edit name',
-                    ),
-                  ),
-                  actions: <Widget>[
-                    TextButton(
-                      child: const Text('Cancel'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    TextButton(
-                      child: const Text('Edit'),
-                      onPressed: () {
-                        updateFolderName( data, _nameController.text);
-                        // onplaylistbuttonclicked();
-                        Navigator.of(context).pop();
-                        // You can access
-                        // String enteredText = textController.text;
-                        // // Do something with the entered text, e.g., add it to a list.
-                        // print('Entered text: $enteredText');
-                        // Navigator.of(context).pop(); // Close the dialog
-                      },
-                    ),
-                  ],
-                );
-              },
-            
+                                        context: context,
+                                        builder: (context) {
+                                          _nameController.text = data.name;
+                                          return AlertDialog(
+                                            title: const Text('Edit name'),
+                                            content: TextField(
+                                              controller: _nameController,
+                                              decoration: const InputDecoration(
+                                                hintText: 'Edit name',
+                                              ),
+                                            ),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                child: const Text('Cancel'),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                              TextButton(
+                                                child: const Text('Edit'),
+                                                onPressed: () {
+                                                  updateFolderName(data,
+                                                      _nameController.text);
+                                                  // onplaylistbuttonclicked();
+                                                  Navigator.of(context).pop();
+                                                  // You can access
+                                                  // String enteredText = textController.text;
+                                                  // // Do something with the entered text, e.g., add it to a list.
+                                                  // print('Entered text: $enteredText');
+                                                  // Navigator.of(context).pop(); // Close the dialog
+                                                },
+                                              ),
+                                            ],
                                           );
+                                        },
+                                      );
                                     },
                                     icon:
                                         Icon(Icons.edit, color: Colors.black)),
@@ -387,7 +386,8 @@ Future<bool> _showDeleteConfirmationDialog(BuildContext context) async {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text("Delete Playlist"),
-            content: const Text("Are you sure you want to delete this Playlist?"),
+            content:
+                const Text("Are you sure you want to delete this Playlist?"),
             actions: <Widget>[
               TextButton(
                 onPressed: () {

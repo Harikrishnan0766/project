@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:marshall/screens/home/first_screens/home.dart';
-// import 'package:marshall/screens/home/newfolder.dart/recently_songs.dart';
 
-class Screenstarted extends StatelessWidget {
-  const Screenstarted({super.key});
+class Screenstarted extends StatefulWidget {
+  Screenstarted({Key? key});
 
+  @override
+  State<Screenstarted> createState() => _ScreenstartedState();
+}
+
+class _ScreenstartedState extends State<Screenstarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,29 +18,38 @@ class Screenstarted extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('asset/images/OMec.gif'),
-                    fit: BoxFit.fill)),
+              image: DecorationImage(
+                image: AssetImage('asset/images/peakpx (5).jpg'),
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 760, left: 130),
-            child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => const ScreenHome()));
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(15.0),
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Text(
-                    'STARTED',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )),
-          )
+          Positioned(
+            bottom: MediaQuery.of(context).size.height * 0.1,
+            left: MediaQuery.of(context).size.width * 0.35,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (ctx) => const ScreenHome()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.transparent,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: Colors.white),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: const Text(
+                  'START',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

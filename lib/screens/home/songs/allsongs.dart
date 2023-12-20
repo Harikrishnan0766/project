@@ -7,9 +7,11 @@ import 'package:marshall/music_db_function/music_db_function.dart';
 import 'package:marshall/screens/home/songs/now_playing.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 import '../../../db/functions/db_functions.dart';
 import '../../../music_db/songs_model.dart';
+import '../../../provider/song_model_provider.dart';
 
 final _audioQuery = OnAudioQuery();
 final AudioPlayer audioPlayer = AudioPlayer();
@@ -31,13 +33,9 @@ class _AllsongsState extends State<Allsongs> {
   void initState() {
     super.initState();
     requestpermission();
-    GetAudio();
-    addToDb(songs: songsList);
 
     // print(songsList);
   }
-
-  List<SongModel> songsList = [];
 
   Future<List<SongModel>> GetAudio() async {
     Future<List<SongModel>> songs = _audioQuery.querySongs(
@@ -46,9 +44,9 @@ class _AllsongsState extends State<Allsongs> {
         uriType: UriType.EXTERNAL,
         ignoreCase: true);
     List<SongModel> song = await songs;
-    for (SongModel s in song) {
-      songsList.add(s);
-    }
+    // for (SongModel s in song) {
+    //   songsList.add(s);
+    // }
 
     return songs;
   }
@@ -56,6 +54,12 @@ class _AllsongsState extends State<Allsongs> {
   void requestpermission() async {
     Future.delayed(Duration(seconds: 4));
     var status = await Permission.storage.request();
+    if (status.isGranted) {
+      List<SongModel> songsList = [];
+      songsList = await GetAudio();
+      addToDb(songs: songsList);
+      setState(() {});
+    }
   }
 
   // playsong(String? uri) {
@@ -224,8 +228,12 @@ class _AllsongsState extends State<Allsongs> {
                 leading: QueryArtworkWidget(
                   id: songData.songid,
                   type: ArtworkType.AUDIO,
+                  nullArtworkWidget: Icon(
+                    Icons.music_note,
+                  ),
                 ),
                 onTap: () {
+                  // context.read<SongmodelProvider>().setId(item.data![index].songid);
                   // playsong(item.data![index].uri);
                   Navigator.of(context).push(
                     MaterialPageRoute(
