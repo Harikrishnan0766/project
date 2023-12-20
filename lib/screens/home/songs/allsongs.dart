@@ -228,8 +228,10 @@ class _AllsongsState extends State<Allsongs> {
                 leading: QueryArtworkWidget(
                   id: songData.songid,
                   type: ArtworkType.AUDIO,
-                  nullArtworkWidget: Icon(
-                    Icons.music_note,
+                  nullArtworkWidget: const CircleAvatar(
+                    child: Icon(
+                      Icons.music_note,
+                    ),
                   ),
                 ),
                 onTap: () {

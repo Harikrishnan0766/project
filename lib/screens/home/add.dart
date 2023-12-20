@@ -71,15 +71,22 @@ class _AddscreenState extends State<Addscreen> {
                           : IconButton(
                               onPressed: () {
                                 setState(() {
-                                   widget.folderModel.deleteData(songData.songid);
+                                  widget.folderModel
+                                      .deleteData(songData.songid);
                                 });
-                               
                               },
                               icon: const Icon(Icons.minimize)),
                     ],
                   ),
                   leading: QueryArtworkWidget(
-                      id: songData.id, type: ArtworkType.AUDIO),
+                    id: songData.id,
+                    type: ArtworkType.AUDIO,
+                    nullArtworkWidget: const CircleAvatar(
+                      child: Icon(
+                        Icons.music_note,
+                      ),
+                    ),
+                  ),
                   onTap: () {
                     //   playsong(item.data![index].uri);
                     Navigator.of(context).push(MaterialPageRoute(

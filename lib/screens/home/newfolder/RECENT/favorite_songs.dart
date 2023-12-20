@@ -63,8 +63,10 @@ class _FavoritesongState extends State<Favoritesong> {
                           leading: QueryArtworkWidget(
                             id: snapshot.data![index].songid,
                             type: ArtworkType.AUDIO,
-                            nullArtworkWidget: const Icon(
-                              Icons.music_note,
+                            nullArtworkWidget:  const CircleAvatar(
+                              child: Icon(
+                                Icons.music_note,
+                              ),
                             ),
                           )),
                     );

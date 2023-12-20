@@ -240,10 +240,18 @@ class _MymusicState extends State<Mymusic> {
                             final data = plyalist[index];
                             return ListTile(
                               leading: QueryArtworkWidget(
-                                  id: data.songid, type: ArtworkType.AUDIO),
+                                id: data.songid,
+                                type: ArtworkType.AUDIO,
+                                nullArtworkWidget: const CircleAvatar(
+                                  
+                                  child: Icon(
+                                    Icons.music_note,
+                                  ),
+                                ),
+                              ),
                               title: Text(
                                 data.title,
-                                style: const TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis),
                               ),
                               trailing: IconButton(
                                 onPressed: () async {
