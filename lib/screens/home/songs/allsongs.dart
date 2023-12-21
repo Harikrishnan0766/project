@@ -253,10 +253,10 @@ class _AllsongsState extends State<Allsongs> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.play_arrow),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: const Icon(Icons.play_arrow),
+      // ),
     );
   }
 

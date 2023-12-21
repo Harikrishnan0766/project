@@ -1,9 +1,6 @@
-import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:on_audio_query/on_audio_query.dart';
-
 import '../music_db/songs_model.dart';
 
 class RecentDbFunction {
@@ -35,6 +32,7 @@ class RecentDbFunction {
     GetRecent();
   }
 
+  // ignore: non_constant_identifier_names
   Future<List<SongsModel>> GetRecent() async {
     final recentDb = await Hive.openBox('recent_db');
     List<SongsModel> songs = [];

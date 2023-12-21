@@ -1,7 +1,5 @@
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:on_audio_query/on_audio_query.dart';
-
 import '../music_db/songs_model.dart';
 
 class GetAllSongController {
@@ -15,10 +13,10 @@ class GetAllSongController {
     for (var element in elements) {
       songList.add(
         AudioSource.uri(
-          Uri.parse(element.uri!),
+          Uri.parse(element.uri),
           tag: MediaItem(
             id: element.id.toString(),
-            album: element.albm ?? "No Album",
+            album: element.albm,
             title: element.title,
             artist: element.subtitle,
             artUri: Uri.parse(element.id.toString()),

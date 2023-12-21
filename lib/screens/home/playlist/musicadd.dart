@@ -163,7 +163,7 @@ import 'package:on_audio_query/on_audio_query.dart';
 import '../../../music_db/songs_model.dart';
 
 class Mymusic extends StatefulWidget {
-  Mymusic({super.key, required this.folderModel, required this.index});
+  const Mymusic({super.key, required this.folderModel, required this.index});
   final FolderModel folderModel;
   final int index;
 
@@ -172,7 +172,7 @@ class Mymusic extends StatefulWidget {
 }
 
 class _MymusicState extends State<Mymusic> {
-  final _audioQuery = new OnAudioQuery();
+  final _audioQuery = OnAudioQuery();
   late List<SongsModel> folderPlaylist = [];
 
   final AudioPlayer _audioPlayer = AudioPlayer();

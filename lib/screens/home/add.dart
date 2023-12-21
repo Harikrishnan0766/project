@@ -7,7 +7,7 @@ import 'package:marshall/screens/home/songs/now_playing.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Addscreen extends StatefulWidget {
-  Addscreen({super.key, required this.folderModel});
+  const Addscreen({super.key, required this.folderModel});
   final FolderModel folderModel;
 
   @override
@@ -15,6 +15,7 @@ class Addscreen extends StatefulWidget {
 }
 
 class _AddscreenState extends State<Addscreen> {
+  // ignore: unused_field
   final _audioQuery = OnAudioQuery();
 
   final AudioPlayer _audioPlayer = AudioPlayer();
@@ -56,7 +57,7 @@ class _AddscreenState extends State<Addscreen> {
                     songData.title,
                   ),
                   subtitle: Text(
-                    "${item.data![index].subtitle}",
+                    item.data![index].subtitle,
                   ),
                   trailing: Wrap(
                     children: [
@@ -65,7 +66,6 @@ class _AddscreenState extends State<Addscreen> {
                               onPressed: () {
                                 addSongs(item.data![index]);
                                 setState(() {});
-                                print(item.data![index].songid);
                               },
                               icon: const Icon(Icons.add))
                           : IconButton(

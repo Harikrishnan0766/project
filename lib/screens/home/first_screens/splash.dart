@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:marshall/screens/home/first_screens/next.dart';
 import 'package:marshall/screens/home/first_screens/started.dart';
 
 

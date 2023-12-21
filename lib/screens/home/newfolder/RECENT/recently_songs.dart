@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:marshall/music_db/songs_model.dart';
-import 'package:marshall/screens/home/newfolder/RECENT/recent.dart';
 import 'package:marshall/screens/home/songs/allsongs.dart';
 import 'package:marshall/screens/home/songs/now_playing.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -15,7 +14,8 @@ class Recentlysong extends StatefulWidget {
 }
 
 class _RecentlysongState extends State<Recentlysong> {
-  RecentDbFunction _recent_db = RecentDbFunction();
+  // ignore: non_constant_identifier_names
+  final RecentDbFunction _recent_db = RecentDbFunction();
   List<SongsModel> songs = [];
   List<SongsModel> recentSongs = [];
   Future<List<SongsModel>> getSongs() async {
@@ -45,7 +45,7 @@ class _RecentlysongState extends State<Recentlysong> {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Musicscreen(songModel: item.data!, audioPlayer:audioPlayer , index: index)));
                 },
                 child: ListTile(
-                  title: Text('${item.data![index].title}' ,style: TextStyle(overflow: TextOverflow.ellipsis),),
+                  title: Text(item.data![index].title ,style: const TextStyle(overflow: TextOverflow.ellipsis),),
                   leading: QueryArtworkWidget(
                     artworkBorder: const BorderRadius.all(Radius.circular(30)),
                     id: item.data![index].songid,

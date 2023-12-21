@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marshall/screens/home/first_screens/next.dart';
 import 'package:marshall/screens/home/first_screens/started.dart';
 import 'package:marshall/screens/home/newfolder.dart/about.dart';
 import 'package:marshall/screens/home/newfolder.dart/privacy.dart';
